@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在线学习</title>
+    <title>注册</title>
 </head>
 <body>
     <h1>用户注册</h1>
     <form action="/register" method="post">
-    <div>
-        用户名: <input type="text" name="username">
-    </div>
-    <div>
-        密码: <input type="password" name="passwd">
-    </div>
-    <div>
-        <input type="button" value="button提交">
-        <input type="submit" value="submit提交">
-    </div>
+        <div>
+            用户名: <input type="text" name="username" placeholder="请输入用户名">
+            <br><br>
+            <!-- 邮箱用来发送邮件验证码 -->
+            <input type="text" name="email" placeholder="请输入邮箱">
+            <br><br>
+            <input type="text" name="temp_password" placeholder="请输入验证码">
+            <!-- 这个button标签的操作由js文件实现 -->
+            <button type="button">获取验证码</button>
+            <br><br>
+            密码: <input type="password" name="passwd" placeholder="请输入密码">
+            <br><br>
+            确认密码: <input type="password" name="re_password" placeholder="请确认密码">
+        </div>
+        <div>
+            <input type="button" value="注册">
+            <input type="submit" value="取消">
+        </div>
     </form>
 </body>
 </html>
