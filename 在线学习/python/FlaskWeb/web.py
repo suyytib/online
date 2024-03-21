@@ -22,13 +22,7 @@ def register():
     else:
         username = request.form.get("username")
         passwd = request.form.get("passwd")
-        sex = request.form.get("sex")
-        hobby_list = request.form.getlist("hobby")
-        city = request.form.get("city")
-        more = request.form.getlist("textarea")
-
-        print(username, passwd, sex, hobby_list, city, more)
-
+        print(username, passwd)
         get_info = request.args
         return get_info
 
