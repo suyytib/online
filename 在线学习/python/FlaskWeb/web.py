@@ -14,14 +14,23 @@ def index():
 def get_news():
     # 默认去当前目录的 templates 文件夹中找
     return render_template("get_news.html")
-@app.route("/register")
-def register():
-    return render_template("register.html")
 
-@app.route("/post/register", methods=['post'])
-def post_register():
-    get_info = request.form
-    return get_info
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == "GET":
+        return render_template('register.html')
+    else:
+        username = request.form.get("username")
+        passwd = request.form.get("passwd")
+        sex = request.form.get("sex")
+        hobby_list = request.form.getlist("hobby")
+        city = request.form.get("city")
+        more = request.form.getlist("textarea")
+
+        print(username, passwd, sex, hobby_list, city, more)
+
+        get_info = request.args
+        return get_info
 
 
 if __name__ == '__main__':

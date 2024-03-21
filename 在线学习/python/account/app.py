@@ -13,6 +13,16 @@ def do_register():
 @app.route("/post/register", methods=['POST'])
 def post_register():
     get_info = request.form
+
+    username = request.form.get("username")
+    passwd = request.form.get("passwd")
+    sex = request.form.get("sex")
+    hobby_list = request.form.getlist("hobby")
+    city = request.form.get("city")
+    more = request.form.getlist("textarea")
+
+    print(username, passwd, sex, hobby_list, city, more)
+
     return get_info
 
 
