@@ -1,5 +1,7 @@
 from blueprints.table_config import db
+# 用户表
 class User(db.Model):
+    # 创建的数据库表名
     __tablename__="user"
     username=db.Column(db.Integer,primary_key=True,autoincrement=True)
     password=db.Column(db.String(200),nullable=False)

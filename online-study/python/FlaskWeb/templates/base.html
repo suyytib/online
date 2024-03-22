@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 窗口名均写在同名占位符里 -->
     <title>{% block title %}{% endblock %}</title>
+    <!-- 头部补充信息写在同名占位符里 -->
+    {% block head %}{% endblock %}
 </head>
 <body>
+    <!-- body具体实现均写在同名占位符里 -->
     {% block body %}
     {% endblock %}
 </body>
