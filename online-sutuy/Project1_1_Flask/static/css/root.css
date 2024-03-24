@@ -1,0 +1,18 @@
+body{
+    background-color: rgba(0, 255, 255, 0.283);
+}
+h1{
+    text-align: center;
+
+}
+a{
+    text-decoration: none;
+    color: rgba(210, 30, 30, 0.726);
+}
+div{
+    background-color: rgb(126, 227, 230);
+    text-align: center;
+    line-height: 50px;
+    width: 100px;
+    height: 50px;
+}
