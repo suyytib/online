@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+登录
+{% endblock %}
+
+{% block head %}
+<script src="../../static/js/code.js"></script>
+<link rel="stylesheet" href="../../static/css/root.css">
+<link rel="stylesheet" type="text/css" href="../../static/css/code.css" />
+
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap.min.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.rtl.css" />
+{% endblock %}
+
+{% block body %}
+<div class="py-xl bg-cover bg-size--cover">
+  <div class="container d-flex align-items-center">
+    <div class="col">
+      <div class="row justify-content-center">
+        <div class="col-lg-4">
+          <div class="card bg-primary text-white">
+            <h4 class="h3 text-white pt-3 pb-5">用户登录</h4>
+            <div class="card-body">
+              <form action="{{url_for('login.login')}}" method="post">
+                <div>
+                  <label>用户名:</label>
+                  <input type="text" name="user_name" class="form-control" placeholder="请输入用户名" />
+                  <p style="color: red;">
+                  {% if is_error %}
+                  用户错误!
+                  {% endif %}
+                  </p>
+                  <br><br>
+                  <label>密码:</label>
+                  <input type="password" name="user_passwd" placeholder="请输入密码" class="form-control" />
+                  <br /><br />
+                  <label>验证码：</label>
+                  <input type="text" name="temp_password" id="input1" placeholder="请输入验证码" class="form-control" />
+                  <br /><br />
+                  <input type="text" id="checkCode" class="code" style="width: 100px" class="form-control" />
+                  <a href="#" onclick="createCode();" class="btn btn-block btn-lg bg-white mt-4">看不清楚</a>
+                  <br /><br />
+                </div>
+                <div>
+                  <button onclick="validate();" type="text" id="myButton" name="quedin"
+                    class="btn btn-block btn-lg bg-white mt-4">
+                    确定
+                  </button>
+                  <input onclick="history.back(-1);" type="button" class="btn btn-block btn-lg bg-white mt-4"
+                    value="取消" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
