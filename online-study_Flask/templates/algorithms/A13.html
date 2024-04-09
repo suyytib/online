@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %}
+图论算法和理论
+{% endblock %}
+
+
+{% block head %}
+<!-- 加载注册用的js代码 -->
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+<script src="../../static/js/bootstrap.js"></script>
+<script src="../../static/js/varlable_rule.js"></script>
+<link rel="stylesheet" href="../../static/css/shuzi.css" />
+
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap.min.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.rtl.css" />
+{% endblock %}
+
+{% block body%}
+<div>
+    <h4 style="text-align:center;">图论算法和理论</h4>
+    <a href="{{url_for('root.root')}}" class="btn btn-block btn-lg bg-white mt-4">返回</a>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">最短路</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                role="tab" aria-controls="profile" aria-selected="false">Floyd</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">SPFA</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact1" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">Dijkstra</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact2" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">最小生成树</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact3" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">Kruskal</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact4" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">Prim</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact5" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">图的连通</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact6" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">强连通分量</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact7" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">割点</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade  show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact2" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact4" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact5" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact6" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact7" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+    </div>
+</div>
+{% endblock %}

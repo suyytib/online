@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% block title %}
+语法进阶
+{% endblock %}
+
+
+{% block head %}
+<!-- 加载注册用的js代码 -->
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+<script src="../../static/js/bootstrap.js"></script>
+<script src="../../static/js/varlable_rule.js"></script>
+<link rel="stylesheet" href="../../static/css/shuzi.css" />
+
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap.min.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.rtl.css" />
+{% endblock %}
+
+{% block body%}
+<div>
+    <h4 style="text-align:center;">语法进阶</h4>
+    <a href="{{url_for('root.root')}}" class="btn btn-block btn-lg bg-white mt-4">返回</a>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">时间复杂度分析</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                role="tab" aria-controls="profile" aria-selected="false">枚举</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">模拟</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact1" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">递归</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact2" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">进制转换</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade  show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <blockquote class="blockquote left">
+                <pre>
+                    <code>
+    <a href="http://t.csdnimg.cn/doxbD" class="btn btn-block btn-sm bg-white">复杂度分析</a>
+    是评估所采用的算法和数据结构效率的一种方式，又可以叫做“事前分析估算
+    方法”，指的是在程序运行之前，在程序员编写程序时就进行代码时间复杂度
+    和空间复杂度的估算，进而提高代码运行效率的一种手段。
+    
+    与事前分析估算方法对应的，还有事后分析估算方法，通过设计好的测试程序和
+    数据，来统计和监控，利用计算机计时器对不同算法编制的程序的运行时间进行
+    比较，从而确定算法效率的高低。
+
+    法则：
+    加法法则：总复杂度等于量级最大的那段代码的复杂度；
+    乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积。
+
+    O(1)
+    一般情况下，只要算法中不存在循环语句，递归语句，即使有成千上万行的代码，
+    其时间复杂度也是O（1）。
+
+    O(n)
+    算法中有n次循环语句，且其他语句复杂度都为1，这个算法的时间复杂度为O(n)。
+
+    O(logn)
+    i=1;
+    while(i<=n){
+        i=i*3;
+    }
+    时间复杂度为O(logn)
+
+
+                    </code>
+                </pre>
+            </blockquote>
+            <blockquote class="blockquote right">
+                <pre>
+                    <code>
+    时间复杂度量级 <a href="https://www.luogu.com.cn/problem/P3952" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+    O(1)	常数级别
+    O(log(n))	对数级别
+    O(n)	线性级别
+    O(n * log(n))	线程对数级别
+    O(n^2)、O(n^3)、O(n^k)	平方级别、立方级别、k次方级别
+    O(2^n)	指数级别  
+    O(n!)	阶乘级别  
+
+    在竞赛中，一般认为计算机1 秒能执行5 × 1e8 次计算，如果题目给出的时
+    间限制为1秒，那么选择的算法执行的计算次数最多应该在1e8 量级(尽量不要超
+    过1e9）才有可能解决这个题目。
+
+    c++选手可以在主函数中加入如下代码来加速输入输出
+
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+                    </code>
+                </pre>
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <blockquote class="blockquote left">
+                <pre>
+                    <code>
+    <a href="http://t.csdnimg.cn/oIg3D" class="btn btn-block btn-sm bg-white">枚举算法</a>的思想是：将问题的所有可能的答案一一列举，然后根据条件判断此答案
+    是否合适，保留合适的，丢弃不合适的。 
+
+    枚举算法的实现往往通过使用循环（嵌套）就能够轻易实现，所以并没有什么思维难度。
+
+    可以从下面几个方面考虑提高算法的效率：
+
+    1.抓住问题状态的本质，尽可能缩小问题状态空间的大小。
+
+    2.加强约束条件，缩小枚举范围。
+
+    3.根据某些问题特有的性质，例如对称性等，避免对本质相同的状态重复求解。
+                    </code>
+                </pre>
+            </blockquote>
+            <blockquote class="blockquote right">
+                <pre>
+                    <code>
+    枚举框架 <a href="https://www.luogu.com.cn/problem/P4994" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+    
+    n=0;
+    for(k=<区间下限>;k<=<区间上限>;k++)    
+                    // 控制枚举范围 
+    if(<约束条件>)   // 根据约束条件实施筛选 
+        { printf(<满足要求的解>);  // 输出解 
+        n++;       // 统计解的个数 
+        }
+
+    衍生算法：
+        前缀和<a href="{{url_for('algorithm.A2')}}" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+        尺取法
+        差分<a href="https://www.luogu.com.cn/problem/P4994" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+                    </code>
+                </pre>
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact2" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+            </blockquote>
+            <blockquote class="blockquote right">
+            </blockquote>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,543 @@
+{% extends 'base.html' %}
+
+{% block title %}
+语法基础
+{% endblock %}
+
+
+{% block head %}
+<!-- 加载注册用的js代码 -->
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+<script src="../../static/js/bootstrap.js"></script>
+<script src="../../static/js/varlable_rule.js"></script>
+<link rel="stylesheet" href="../../static/css/shuzi.css" />
+
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap.min.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.rtl.css" />
+{% endblock %}
+
+{% block body%}
+<div>
+    <h4 style="text-align:center;">语法基础</h4>
+    <a href="{{url_for('root.root')}}" class="btn btn-block btn-lg bg-white mt-4">返回</a>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">变量</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                role="tab" aria-controls="profile" aria-selected="false">运算</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">输入输出</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact1" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">函数</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact2" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">结构体/类</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact3" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">内置库函数API</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade  show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <blockquote class="blockquote left">
+                <pre><code>
+    C++ 变量类型
+
+    整数类型(Integer Types):
+
+    int:用于表示整数,通常占用4个字节。
+    short:用于表示短整数,通常占用2个字节。
+    long:用于表示长整数,通常占用4个字节。
+    long long:用于表示更长的整数,通常占用8个字节。
+
+    浮点类型(Floating-Point Types):
+    
+    float:用于表示单精度浮点数,通常占用4个字节。
+    double:用于表示双精度浮点数,通常占用8个字节。
+    long double:用于表示更高精度的浮点数,占用字节数可以根据实现而变化。
+
+    字符类型(Character Types):
+    
+    char:用于表示字符,通常占用1个字节。
+
+    布尔类型(Boolean Type):
+    
+    bool:用于表示布尔值,只能取true或false。
+
+    枚举类型(Enumeration Types):
+    
+    enum:用于定义一组命名的整数常量。
+
+    指针类型(Pointer Types):
+    
+    type*:用于表示指向类型为type的对象的指针。
+
+    数组类型(Array Types):
+    
+    type[]或type[size]：用于表示具有相同类型的元素组成的数组。
+
+    结构体类型(Structure Types):
+    
+    struct:用于定义包含多个不同类型成员的结构。
+
+    类类型(Class Types):
+    
+    class:用于定义具有属性和方法的自定义类型。
+                </code></pre>
+            </blockquote>
+            <blockquote class="blockquote right">
+                <p>C++  <a href="http://t.csdnimg.cn/l7jrO" class="btn btn-block btn-sm bg-white">变量</a>作用域</p>
+                <p>局部作用域：在函数内部声明的变量具有局部作用域，它们只能在函数内部访问。</p>
+                <p>局部变量在函数每次被调用时被创建，在函数执行完后被销毁。</p>
+                <br>
+                <p>全局作用域：在所有函数和代码块之外声明的变量具有全局作用域，它们可以被</p>
+                <p>程序中的任何函数访问。全局变量在程序开始时被创建，在程序结束时被销毁。</p>
+                <br>
+                <p>块作用域：在代码块内部声明的变量具有块作用域，它们只能在代码块内部访问。</p>
+                <p>块作用域变量在代码块每次被执行时被创建，在代码块执行完后被销毁。</p>
+                <br>
+                <p>类作用域：在类内部声明的变量具有类作用域，它们可以被类的所有成员函数访</p>
+                <p>问。类作用域变量的生命周期与类的生命周期相同。</p>
+                <br>
+                <p>变量命名规则</p> 
+                <div>
+                <input type="text" id="checkVarlable" style="width: 200px"/>
+                <a href="#" onclick="varlableRule();" class="btn btn-block bg-white">命名</a>
+                </div>
+                <p>变量名只能是字母（A-Z，a-z）和数字（0-9）或者下划线（_）组成。</p>
+                <p>第一个字母必须是字母或者下划线开头。</p>
+                <p>不能使用C++关键字来命名变量，以免冲突。</p>
+                <p>变量名区分大小写。</p>
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <blockquote class="blockquote left">
+                <pre><code>
+    算术运算符
+
+    +	把两个操作数相加
+    -	从第一个操作数中减去第二个操作数
+    *	把两个操作数相乘
+    <a href="http://t.csdnimg.cn/1NzZH" class="btn btn-block btn-sm bg-white">/</a>	分子除以分母 
+    %	取模运算符，整除后的余数
+    <a href="http://t.csdnimg.cn/rbPk8" class="btn btn-block btn-sm bg-white">++</a>	自增运算符，整数值增加 1 
+    --	自减运算符，整数值减少 1
+
+    关系运算符
+
+    ==	检查两个操作数的值是否相等，如果相等则条件为真。
+    !=	检查两个操作数的值是否相等，如果不相等则条件为真。
+    >	检查左操作数的值是否大于右操作数的值，如果是则条件为真。
+    <	检查左操作数的值是否小于右操作数的值，如果是则条件为真。
+    >=	检查左操作数的值是否大于或等于右操作数的值，如果是则条件为真。
+    <=	检查左操作数的值是否小于或等于右操作数的值，如果是则条件为真。
+
+    逻辑运算符
+
+    &&	逻辑与运算符。如果两个操作数都 true,则条件为 true。
+    ||	逻辑或运算符。如果两个操作数中有任意一个 true,则条件为 true。
+    !	逻辑非运算符。如果条件为 true 则逻辑非运算符将使其为 false。
+
+    位运算符
+
+    &	按位与操作，按二进制位进行"与"运算。运算规则：
+        0&0=0;   0&1=0;   1&0=0;   1&1=1;
+    |	按位或运算符，按二进制位进行"或"运算。运算规则：
+        0|0=0;   0|1=1;   1|0=1;   1|1=1;
+    ^	异或运算符，按二进制位进行"异或"运算。运算规则：
+        0^0=0;   0^1=1;   1^0=1;   1^1=0;
+    ~	取反运算符，按二进制位进行"取反"运算。运算规则：
+        ~1=-2;   ~0=-1;
+    <<	二进制左移运算符。将一个运算对象的各二进制位全部左移若干位，
+        左边的二进制位丢弃，右边补0)。
+    >>	二进制右移运算符。将一个数的各二进制位全部右移若干位，正数左
+        补0，负数左补1，右边丢弃。
+
+    赋值运算符
+
+    =	简单的赋值运算符，把右边操作数的值赋给左边操作数
+    +=	加且赋值运算符，把右边操作数加上左边操作数的结果赋值给左边操作数
+    -=	减且赋值运算符，把左边操作数减去右边操作数的结果赋值给左边操作数
+    *=	乘且赋值运算符，把右边操作数乘以左边操作数的结果赋值给左边操作数
+    /=	除且赋值运算符，把左边操作数除以右边操作数的结果赋值给左边操作数
+    %=	求模且赋值运算符，求两个操作数的模赋值给左边操作数
+    <<=	左移且赋值运算符
+    >>=	右移且赋值运算符
+    &=	按位与且赋值运算符
+    ^=	按位异或且赋值运算符
+    |=	按位或且赋值运算符
+
+    其他运算符
+
+    sizeof	sizeof 运算符返回变量的大小。
+    Condition ? X : Y	条件运算符。如果Condition为真 ? 则值为 X : 否则值为 Y。
+    ,	逗号运算符会顺序执行一系列运算。整个逗号表达式的值是以逗号分隔的
+        列表中的最后一个表达式的值。
+    .（点）和 ->（箭头）	成员运算符用于引用类、结构和共用体的成员。
+    Cast	强制转换运算符把一种数据类型转换为另一种数据类型。
+    &	指针运算符 & 返回变量的地址。
+    *	指针运算符 * 指向一个变量。
+                </code></pre>
+            </blockquote>
+            <blockquote class="blockquote right">
+                <p>以下是 C++ 中常见的运算符按照优先级从高到低的排序：</p>
+                <br>
+                <p>::   作用域解析运算符</p>
+                <p>()   函数调用、类型转换</p>
+                <p>[]   数组访问</p>
+                <p> ->  指针成员访问</p>
+                <p> ++  递增、-- 递减</p>
+                <p> *   解引用、& 取地址</p>
+                <p> !   逻辑非、~ 按位取反</p>
+                <p> *   乘法、/ 除法、% 取模</p>
+                <p> +   加法、- 减法</p>
+                <p> <<  左移、>> 右移</p>
+                <p> <   小于、> 大于、<= 小于等于、>= 大于等于</p>
+                <p> ==  等于、!= 不等于</p>
+                <p> &   按位与</p>
+                <p> ^   按位异或</p>
+                <p> |   按位或</p>
+                <p> &&  逻辑与</p>
+                <p> ||  逻辑或</p>
+                <p> ?:  条件运算符</p>
+                <p> =   赋值</p>
+                <p> +=、-=、*=、/=、%=、<<=、>>=、&=、^=、|=    合赋值运算符</p>
+                <p> ,   逗号运算符</p>  
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+                <pre><code>
+    标准输入流
+        C 标准输入
+
+            <a href="http://t.csdnimg.cn/NpXpt" class="btn btn-block btn-sm bg-white">scanf</a>("%d",&a)
+
+            <a href="http://t.csdnimg.cn/PPQ3J" class="btn btn-block btn-sm bg-white">gets</a>(str) 
+
+            <a href="http://t.csdnimg.cn/CieuJ" class="btn btn-block btn-sm bg-white">fgets</a>(str,20,stdin) 
+
+            <a href="http://t.csdnimg.cn/uny3Q" class="btn btn-block btn-sm bg-white">fgetc</a>(fp) & getc(fp) 
+
+            <a href="http://t.csdnimg.cn/TY9cS" class="btn btn-block btn-sm bg-white">getchar</a>()
+
+        C++ 标准输入() 
+            cin
+
+            <a href="http://t.csdnimg.cn/92D8K" class="btn btn-block btn-sm bg-white">cin.get</a>() 
+
+            cin.getline()
+
+            <a href="http://t.csdnimg.cn/rPmIa" class="btn btn-block btn-sm bg-white">getline</a>(cin,)
+    标准输出流
+        C 标准输出
+
+            <a href="http://t.csdnimg.cn/GVWds" class="btn btn-block btn-sm bg-white">printf</a>() 
+
+            <a href="http://t.csdnimg.cn/g5y31" class="btn btn-block btn-sm bg-white">puts</a>(str)
+
+            <a href="http://t.csdnimg.cn/cs4Tv" class="btn btn-block btn-sm bg-white">fputs</a>(str,fp)
+
+            <a href="http://t.csdnimg.cn/b9T98" class="btn btn-block btn-sm bg-white">fputc</a>() & putc()
+
+            <a href="http://t.csdnimg.cn/7Y3HT" class="btn btn-block btn-sm bg-white">putchar</a>()
+
+            <a href="http://t.csdnimg.cn/Nmnr3" class="btn btn-block btn-sm bg-white">fflush</a>()
+
+        C++ 标准输出
+            cout
+                </code></pre>
+            </blockquote>
+            <blockquote class="blockquote right">
+                <pre><code>
+    快速输入算法
+        std::cin < scanf < getchar
+        cin 智能地输入数据,需要消耗大量时间；
+        scanf 识别格式化字符串，需要消耗部分时间；
+        getchar 直接接收一个字符，几乎不消耗时间；      
+        
+        快读int
+        inline void read128(__int128 &x){
+            bool f=1;x=0;char ch=getchar();
+            while(ch<'0'||ch>'9'){if(ch=='-') f=!f;ch=getchar();}
+            while(ch>='0'&&ch<='9'){x=(x<<1)+(x<<3)+(ch^48);ch=getchar();}
+            x=(f?x:-x);return;
+        }
+        
+        快读string
+        inline void readS(std::string &s){
+            char ch=getchar();
+            while(ch==' '||ch=='\n') ch=getchar();
+            while(ch!=' '&&ch!='\n') s+=ch,ch=getchar();
+        }             
+        
+    快速输出算法
+        std::cout < printf < putchar
+        
+        快写string
+        inline void writeS(std::string s){
+            int len=s.length();
+            for(int i=0;i < len;i++)
+                putchar(s[i]);
+        }
+                </code></pre>
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+                <pre><code>
+    1.基本函数
+    return_type function_name(parameter list)
+    {
+    /* code */
+    }
+    return_type：返回类型
+    function_name：函数名称，见名知意
+    parameter list：参数列表
+    函数主体：需要实现的功能
+
+    2.函数重载
+                void fun(int a, int b);
+    入参个数不同 void fun(int a, int b, int c);
+
+                void fun(int a, int b);
+    入参类型不同 void fun(double a, double b);
+
+                  void fun(int a, double b);
+    入参类型的顺序 void fun(double a, int b);
+
+    3.<a href="http://t.csdnimg.cn/sXxSa" class="btn btn-block btn-sm bg-white">函数指针</a>
+    该指针指向函数，可以将函数当作变量，赋予函数变量的属性
+    return_type （*function_name）(parameter list)
+
+    4.<a href="http://t.csdnimg.cn/FHece" class="btn btn-block btn-sm bg-white">指针函数</a>
+    指针函数是一个函数，重点是函数，返回类型是指针
+    const char* fun(std::string str1, std::string str2)
+    {
+        return (str1+str2).c_str();
+    }
+
+    5.<a href="http://t.csdnimg.cn/NIyFp" class="btn btn-block btn-sm bg-white">函数模版</a>
+    函数模板可以代替函数重载，无关乎类型
+    template< typename T1, typename T2,......,typename Tn >
+    return_type function_name(parameter list)
+    {
+        /* code */
+    }
+
+    6.<a href="http://t.csdnimg.cn/njzKi" class="btn btn-block btn-sm bg-white">回调函数</a>
+    回调函数和普通的函数一样，都是函数的调用，区别在于回调函数是把函数
+    的指针作为参数传递给另外一个函数（函数指针可以赋予函数变量的特性）
+
+    7.<a href="http://t.csdnimg.cn/Wq0Ck" class="btn btn-block btn-sm bg-white">lambda函数</a>
+    [capture list] (parameters) specifiers exception attr->return_type{body}
+
+    8.<a href="http://t.csdnimg.cn/S9sOx" class="btn btn-block btn-sm bg-white">内联函数</a>
+    C++可以通过inline，在编译时将调用函数用函数体来替换，用以消除调用函数的时空开销
+
+    9.递归函数
+    递归函数可以理解为，函数调用自身；其核心在于将问题分解为类型相同的小问题
+    应用包括：求正数n!、斐波那契数列、汉诺塔等
+                </code></pre>
+            </blockquote>
+            <blockquote class="blockquote right">
+                竞赛中必学 <a href="https://www.apiref.com/cpp-zh/cpp.html" class="btn btn-block btn-sm bg-white">c++</a> 函数
+
+                    <p>1 <a href="https://www.apiref.com/cpp-zh/cpp/io/c/printf.html" class="btn btn-block btn-sm bg-white">sprintf</a></p>
+                    
+                    <p>2 <a href="https://www.apiref.com/cpp-zh/c/io/fscanf.html" class="btn btn-block btn-sm bg-white">sscsnf</a></p>
+
+                    <p>3 <a href="https://www.apiref.com/cpp-zh/cpp/algorithm/lower_bound.html" class="btn btn-block btn-sm bg-white">lower_bound</a></p>
+
+                    <p>4 <a href="https://www.apiref.com/cpp-zh/cpp/algorithm/upper_bound.html" class="btn btn-block btn-sm bg-white">upper_bound</a></p>
+
+                    <p>5 <a href="https://www.apiref.com/cpp-zh/cpp/string/basic_string/substr.html" class="btn btn-block btn-sm bg-white">substr</a></p>
+
+                    <p>6 <a href="https://www.apiref.com/cpp-zh/cpp/algorithm/sort.html" class="btn btn-block btn-sm bg-white">sort</a></p>
+
+                    <p>7 <a href="https://www.apiref.com/cpp-zh/cpp/algorithm/max_element.html" class="btn btn-block btn-sm bg-white">max_element</a></p>
+
+                    <p>8 <a href="https://www.apiref.com/cpp-zh/cpp/algorithm/min_element.html" class="btn btn-block btn-sm bg-white">min_element</a></p>
+
+                    <p>9 <a href="https://www.apiref.com/cpp-zh/cpp/algorithm/unique.html" class="btn btn-block btn-sm bg-white">unique</a></p>
+
+                    <p>10 <a href="https://www.apiref.com/cpp-zh/cpp/numeric/gcd.html" class="btn btn-block btn-sm bg-white">__gcd</a></p>
+
+                    <p>11 <a href="https://www.apiref.com/cpp-zh/cpp/numeric/lcm.html" class="btn btn-block btn-sm bg-white">lcm</a></p>
+
+                    <p>12 <a href="https://www.apiref.com/cpp-zh/cpp/algorithm/swap.html" class="btn btn-block btn-sm bg-white">swap</a></p>
+
+                    <p>13 <a href="https://www.apiref.com/cpp-zh/cpp/algorithm/next_permutation.html" class="btn btn-block btn-sm bg-white">next_permutation</a></p>
+
+                    <p>14 <a href="https://www.apiref.com/cpp-zh/cpp/named_req/Compare.html" class="btn btn-block btn-sm bg-white">compare</a></p>
+
+                    <p>15 <a href="https://www.apiref.com/cpp-zh/cpp/string/basic_string/to_string.html" class="btn btn-block btn-sm bg-white">to_string</a></p>
+
+                    <p>16 <a href="https://www.apiref.com/cpp-zh/cpp/algorithm/reverse.html" class="btn btn-block btn-sm bg-white">reverse</a></p>
+
+                    <p>17 <a href="https://www.apiref.com/cpp-zh/cpp/algorithm/find_if_not.html" class="btn btn-block btn-sm bg-white">find</a></p>
+
+                    <p>18 <a href="http://t.csdnimg.cn/l2rUo" class="btn btn-block btn-sm bg-white">set< int ></a></p>
+
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact2" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+                <pre><code>
+    结构体
+    一、定义与声明
+    1. 先定义结构体类型再单独进行变量定义  
+        struct Student{};
+        struct Student Stu;
+    2. 紧跟在结构体类型说明之后进行定义
+        struct Student{}Stu,StuArray[10],*pStu;
+    3. 在说明一个无名结构体变量的同时直接进行定义
+        struct{}Stu,StuArray[10],*pStu;
+    4. 使用typedef说明一个结构体变量之后再用新类名来定义变量
+        typedef struct{}student;
+        Student Stu,
+    5. 使用new动态创建结构体变量
+        struct Student{};
+        Student *s = new Student();
+
+    二、结构体构造函数
+    3种结构体初始化方法：
+        1.利用结构体自带的默认构造函数
+        2.利用带参数的构造函数
+        3.利用默认无参的构造函数
+
+    三、结构体嵌套
+    正如类的对象可以嵌套在另一个类中一样，结构体的实例也可以嵌套在另一个结构体中。
+
+    四、结构体赋值与访问
+    结构体中的变量，可以直接通过"."操作符来访问。
+    而对于结构体指针而言：必须通过"->"符号来访问指针所指结构体的变量。
+
+    类
+
+    （1）在类的定义过程中，不使用public与private声明的话，类中的数据和
+        成员函数都默认为私有的。
+
+    （2）类中的成员限定访问符：public与private是可以多次出现的，而且不
+        限定先后顺序。
+
+    （3）C++继承和发展了C语言中的结构体类型，该类型在C语言知识数据的合集
+        ，在C++中加入了函数。所以这样的扩展让结构体类型具有了与类相似的
+        功能（数据和函数），C++允许用struct去声明一个类，但是与class相
+        比，前者不用成员限定访问符声明时都默认为公用的。
+
+    （4）类的成员函数是可以在类外定义的，但是要注意两点：需要在类内声明，
+        定义是需要加上类名
+
+    一般把只有数据的，而且函数少的，一些短的与数据相关的把它打包成结构体，
+    把一些复杂的，含义混乱的，代码比较长的把它打包成类。
+                </code></pre>
+            </blockquote>
+            <blockquote class="blockquote right">
+                <p><a href="http://t.csdnimg.cn/H7RCR" class="btn btn-block btn-sm bg-white">结构体内存对齐</a>规则：</p>
+                <p>1.结构体的第一个成员永远放在结构体起始位置偏移量为0的位置</p>
+                <br>
+                <p>2.从第二个成员开始，总是放在偏移量为一个对齐数的整数处,对齐数</p>
+                <p>=编译器默认的对齐数和变量自身大小的较小值</p>
+                <br>
+                <p>3.结构体的总大小必须是各个成员的对齐数中最大的那个对齐数的整数倍</p>
+                <br>
+                <p>算法竞赛中的结构体自定义排序 <a href="https://www.luogu.com.cn/problem/P1093" class="btn btn-block btn-sm bg-white">小试牛刀</a></p>
+                <p>使用运算符重载:</p>
+                <br>
+                <p>默认比较方式按‘<’来执行,返回值为true,则代表比较的两个数不进行交</p>
+                <p>换,为false则进行交换.</p>
+                <br>
+                <p>适用于节点Node,有a和b两个属性的结构体比较</p>
+            </blockquote>
+        </div>
+        <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab">
+            <blockquote class="blockquote left">
+                <pre><code>
+    1.字符串常见库函数
+
+    1.1 <a href="https://www.apiref.com/cpp-zh/c/string/byte/strlen.html" class="btn btn-block btn-sm bg-white">strlen</a>库函数
+    
+    1.2 <a href="https://www.apiref.com/cpp-zh/c/string/byte/strcpy.html" class="btn btn-block btn-sm bg-white">strcpy</a>库函数
+
+    1.3 <a href="https://www.apiref.com/cpp-zh/c/string/byte/strncpy.html" class="btn btn-block btn-sm bg-white">strncpy</a>库函数
+
+    1.4 <a href="https://www.apiref.com/cpp-zh/c/string/byte/strcat.html" class="btn btn-block btn-sm bg-white">strcat</a>库函数
+
+    1.5 <a href="https://www.apiref.com/cpp-zh/c/string/byte/strncat.html" class="btn btn-block btn-sm bg-white">strncat</a>库函数
+
+    1.6 <a href="https://www.apiref.com/cpp-zh/c/string/byte/strcmp.html" class="btn btn-block btn-sm bg-white">strcmp</a>比较函数
+
+    1.7 <a href="https://www.apiref.com/cpp-zh/c/string/byte/strncmp.html" class="btn btn-block btn-sm bg-white">strncmp</a>函数
+
+    1.8 <a href="https://www.apiref.com/cpp-zh/c/string/byte/strstr.html" class="btn btn-block btn-sm bg-white">strstr</a>库函数
+
+    1.9 <a href="https://www.apiref.com/cpp-zh/c/string/byte/strerror.html" class="btn btn-block btn-sm bg-white">strerror</a>库函数
+
+    1.10 <a href="https://www.apiref.com/cpp-zh/c/string/byte/strtok.html" class="btn btn-block btn-sm bg-white">strtok</a>库函数
+
+    2.判断字符函数
+
+    2.1 <a href="https://www.apiref.com/cpp-zh/c/string/byte/isdigit.html" class="btn btn-block btn-sm bg-white">isdigit</a>库函数
+
+    2.2 <a href="https://www.apiref.com/cpp-zh/c/string/byte/islower.html" class="btn btn-block btn-sm bg-white">islower</a>库函数
+
+    2.3 <a href="https://www.apiref.com/cpp-zh/c/string/byte/isupper.html" class="btn btn-block btn-sm bg-white">isupper</a>库函数
+
+    3.字符转换函数
+
+    3.1 <a href="https://www.apiref.com/cpp-zh/c/string/byte/tolower.html" class="btn btn-block btn-sm bg-white">tolower</a>库函数
+
+    3.2 <a href="https://www.apiref.com/cpp-zh/c/string/byte/toupper.html" class="btn btn-block btn-sm bg-white">toupper</a>库函数
+
+    4.常见的内存函数
+
+    4.1 <a href="https://www.apiref.com/cpp-zh/c/string/byte/memcpy.html" class="btn btn-block btn-sm bg-white">memcpy</a>库函数
+
+    4.2 <a href="https://www.apiref.com/cpp-zh/c/string/byte/memmove.html" class="btn btn-block btn-sm bg-white">memmove</a>库函数
+
+    4.3 <a href="https://www.apiref.com/cpp-zh/c/string/byte/memcmp.html" class="btn btn-block btn-sm bg-white">memcmp</a>库函数
+
+    4.4 <a href="https://www.apiref.com/cpp-zh/c/string/byte/memset.html" class="btn btn-block btn-sm bg-white">memset</a>库函数
+                </code></pre>
+            </blockquote>
+            <blockquote class="blockquote right">
+                <p>C++之常见STL容器</p>
+                <br>
+                <p><a href="http://t.csdnimg.cn/roV9A" class="btn btn-block btn-sm bg-white">string 类</a></p>
+                <br>
+                <p><a href="http://t.csdnimg.cn/c6oS4" class="btn btn-block btn-sm bg-white">vector 容器</a></p>
+                <br>
+                <p><a href="http://t.csdnimg.cn/B0sbd" class="btn btn-block btn-sm bg-white">set 容器</a></p>
+                <br>
+                <p><a href="http://t.csdnimg.cn/oxlei" class="btn btn-block btn-sm bg-white">queue 容器</a></p>
+                <br>
+                <p><a href="http://t.csdnimg.cn/Avl8z" class="btn btn-block btn-sm bg-white">priority_queue 容器</a></p>
+                <br>
+                <p><a href="http://t.csdnimg.cn/r33bW" class="btn btn-block btn-sm bg-white">stack 容器</a></p>
+                <br>
+                <p><a href="http://t.csdnimg.cn/6F5zv" class="btn btn-block btn-sm bg-white">dequeue 容器</a></p>
+                <br>
+                <p><a href="http://t.csdnimg.cn/9eTHa" class="btn btn-block btn-sm bg-white">map 容器</a></p>
+                <br>
+                <p><a href="http://t.csdnimg.cn/1GCKG" class="btn btn-block btn-sm bg-white">pair 容器</a></p>
+                <br>
+                <p><a href="http://t.csdnimg.cn/WG63J" class="btn btn-block btn-sm bg-white">bitset 容器</a></p>
+                <br>
+
+            </blockquote>
+        </div>
+    </div>
+</div>
+{% endblock %}
