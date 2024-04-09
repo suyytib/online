@@ -1,0 +1,13 @@
+.left{
+    background-color: pink;
+    width: 50%;
+    float: left;/* 可将此句改为position:absolute;left:0; */
+}
+.right{
+    background-color: dodgerblue;
+    width: 50%;
+    float:right;/* 可将此句改为position:absolute;left:50%; */
+}
+.bg-slate-500{
+    background-color: rgb(100 116 139);
+}
