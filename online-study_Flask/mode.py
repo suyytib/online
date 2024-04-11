@@ -12,7 +12,7 @@ model.add(tf.keras.layers.Dense(10,activation='softmax'))
 #model.summary()
 
 model.compile(loss='sparse_categorical_crossentropy',
-              optimizer='adam' , metrics=[ 'sparse_categorical_accuracy'])
+            optimizer='adam' , metrics=[ 'sparse_categorical_accuracy'])
 model.fit(x_train,y_train,batch_size=32,epochs=5)
 model.evaluate(x_test,y_test,batch_size=32,verbose=2)
 with open('my_model.pkl', 'wb') as f:

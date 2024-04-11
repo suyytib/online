@@ -1,11 +1,11 @@
 import numpy as np
-from torchvision.transforms import transforms
+# from torchvision.transforms import transforms
 from flask import Blueprint, flash, request
 from ctypes import *
-from skimage import io
+# from skimage import io
 from flask import render_template
 import pickle
-import tensorflow as tf
+# import tensorflow as tf
 bp=Blueprint("box",__name__,url_prefix="/box")
 @bp.route('/')
 def box_root():

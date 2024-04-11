@@ -18,7 +18,7 @@
                     <div class="card bg-info text-white">
                         <div class="card-body">
                             <h4 class="h3 text-white pt-3 pb-5">用户注册</h4>
-                            <form action="{{url_for('login.register')}}" method="post">
+                            <form action="{{url_for('login.register_captcha')}}" method="post">
                                 <div class="form-group">
                                     <label>用户名: </label>
                                     <input type="text" name="username" class="form-control" placeholder="请输入用户名" />
@@ -52,7 +52,7 @@
                                         注册
                                     </button>
                                     <!-- 使用js实现回到登陆界面 -->
-                                    <a href="{{url_for('root.root')}}" class="btn btn-block btn-lg bg-white mt-4">取消</a>
+                                    <a href="{{url_for('root')}}" class="btn btn-block btn-lg bg-white mt-4">取消</a>
                                 </div>
                                 <div class="form-group">
                                     <p style="color: red">

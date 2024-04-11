@@ -8,50 +8,50 @@ from flask_mail import Message
 from table_config import mail,db
 from forms import Login_Form, Register_Form
 from model import User
-from sqlalchemy import or_
 from model import Captcha
 from flask import jsonify
 from flask import session
 # 实例化蓝图对象,该对象用于生成视图函数,这些函数都在蓝图的指定url为基础上绑定各自的url
 bp=Blueprint("login",__name__,url_prefix='/login')
 
-@bp.route('/',methods=["GET","POST"]) # 登录视图函数
+@bp.route('/',methods=["GET"]) # 登录视图函数
 def login():
-    if request.method=="GET":
-        return render_template('login/login.html',is_error=False)
+    return render_template('login/login.html',is_error=False)
+
+@bp.route('/captcha/',methdos=["POST"])
+def login_captcha():
+    weqwe=request.form.get("quedin")
+    form=Login_Form(request.form)
+    if form.validate() and weqwe!='0':
+        user=User.query.filter(username=form.user_name.data,email=form.user_name.data).first()
+        if user and (user.password==form.user_passwd.data):
+            session["user_id"]=user[0].id
+            return render_template('/root.html')
+        return redirect(url_for('root.root'))
     else:
-        weqwe=request.form.get("quedin")
-        form=Login_Form(request.form)
-        if form.validate() and weqwe!='0':
-            user=User.query.filter(or_(User.username==form.user_name.data,User.email==form.user_name.data)).all()
-            if user and (user[0].password==form.user_passwd.data):
-                session["user_id"]=user[0].id
-                return render_template('/root.html')
-            return redirect(url_for('root.root'))
-        else:
-            return render_template('login/login.html',is_error=True)
+        return redirect(url_for('login.login'))
     
-@bp.route('/register/', methods=['GET', 'POST'])
+@bp.route('/register/', methods=['GET'])
 def register():   # 注册视图函数
-    if request.method == "GET":
-        return render_template('/login/register.html')
-    else:
-        # 将表单传入验证器类进行初始化
-        form=Register_Form(request.form)
+    return render_template('/login/register.html')
+
+@bp.route('/register/captcha/',methods=["POST"])
+def register_captcha():
+    form=Register_Form(request.form)
         # 从数据库中查找验证码
-        true_captcha=Captcha.query.filter(or_(Captcha.email==form.email.data)).all()
-        # 判断验证是否成功，以及查询对象是否存在
-        if form.validate() and true_captcha:
-            # 判断查找到的验证码是否匹配
-            if request.form.get("captcha")==true_captcha[-1].captcha:
-                # 创建用户并同步到数据库
-                new_user=User(username=form.username.data , password=form.passwd.data , email=form.email.data)
-                db.session.add(new_user)
-                db.session.commit()
-                # 重定向到登陆界面
-                return redirect(url_for("login.login"))
-        # 上述验证中出现错误则重定向到错误页面
-        return render_template('login/register.html',is_error=True)
+    true_captcha=Captcha.query.filter_by(email=form.email.data).all()
+    # 判断验证是否成功，以及查询对象是否存在
+    if form.validate() and true_captcha:
+        # 判断查找到的验证码是否匹配
+        if request.form.get("captcha")==true_captcha[-1].captcha:
+            # 创建用户并同步到数据库
+            new_user=User(username=form.username.data , password=form.passwd.data , email=form.email.data)
+            db.session.add(new_user)
+            db.session.commit()
+            # 重定向到登陆界面
+            return redirect(url_for("login.login"))
+    # 上述验证中出现错误则重定向到错误页面
+    return redirect(url_for('login.register'))
     
 # 邮箱发送函数
 @bp.route('/register/email_send/')
