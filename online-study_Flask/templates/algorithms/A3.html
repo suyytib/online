@@ -63,20 +63,131 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade  show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+    在我们进行递推时，如果状态空间（ans出现的所有可能集合）很大，通常线性递推
+
+    无法满足时间和空间复杂度的要求,那么我们可以通过成倍增长的方式，只递推状态
+
+    空间在2的整数次幂位置上的值作为代表，当我们需要其他位置上的值时，我们通过
+
+    “任意整数可以表示成若干个2的次幂项的和”这一性质，对答案进行相加求解，这也
+
+    就要求我们递推的问题的状态空间关于2的次幂具有可划分性
+
+    倍增与二进制划分相结合，降低了求解很多问题的时间和空间复杂度，<a href="{{url_for('algorithm.A12')}}" class="btn btn-block btn-sm bg-white">快速幂</a> 就是
+    其中一个体现
+
+    倍增很像是二分的逆过程（自底向上的二分），二分是对一个很大的区间折半的查找
+    看当前是否成立，是用一个值去对应区间
+
+    一般二分比较快，但也有例外，比如测试集中存在大量的比较近的x，我们可以用倍增。
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
+                <pre>
+                    <code>
+    <a href="http://t.csdnimg.cn/1kTWb" class="btn btn-block btn-sm bg-white">倍增</a> 模版：<a href="http://t.csdnimg.cn/1kTWb" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+    int r=0,p=1;
+    while(p)
+    {
+        if(r+p< v.size() && v[r+p]<=x) r+=p,p<<=1;
+        else p>>=1;
+    }
+
+    衍生算法：
+    <a href="{{url_for('algorithm.A6')}}" class="btn btn-block btn-sm bg-white">ST表</a>(区间最值问题) 
+
+    <a href="{{url_for('algorithm.A16')}}" class="btn btn-block btn-sm bg-white">LCA</a>(最近公共祖先问题)
+                    </code>
+                </pre>
             </blockquote>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+    什么是 <a href="http://t.csdnimg.cn/OYAtA" class="btn btn-block btn-sm bg-white">构造</a>
+
+    不同于其它的算法、数据结构题，根据查询输出结果；构造题是让你给出一组方案，   
+    使得在一定限制内符合条件。从形式上来看，问题的答案往往具有某种规律性，使得   
+    在问题规模迅速增大的时候，仍然有机会比较容易地得到答案。这要求解题时要思考   
+    问题规模增长对答案的影响，这种影响是否可以推广。构造题一个很显著的特点就是   
+    高自由度，也就是说一道题的构造方式可能有很多种，但是会有一种较为简单的构造  
+    方式满足题意。并不存在一个通用解法或套路可以解决所有构造题，甚至很难找出解   
+    题思路的共性。
+
+    解决方法
+
+    考虑问题时，我们往往从小情况入手，再构造大的情况。有时我们也会考虑特殊情况，
+    自己添加条件限制范围。
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
+                <pre>
+                    <code>
+    <a href="https://www.luogu.com.cn/problem/P9373" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+                    </code>
+                </pre>
             </blockquote>
         </div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+    位运算符
+    <a href="https://www.luogu.com.cn/problem/P9373" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+    
+    补码，反码，原码
+
+    1.原码就是符号位加上真值的绝对值，其他位表示值。
+
+    如+1的原码为  0000 0001 
+
+    -1的原码为  1000 0001
+
+    2.正数的反码是其本身，而负数的反码是其原码符号位不变，其他位置取反。
+
+    3.正数的补码是其本身，而负数的补码是其反码+1。
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
+                <pre>
+                    <code>
+    竞赛须知
+    <a href="http://t.csdnimg.cn/4lnfm" class="btn btn-block btn-sm bg-white">位运算</a>
+    lowbit(x)即为二进制下x的最低位
+
+    popcount(x)定义为x在二进制下1的个数
+
+    builtin 位运算函数
+
+    3.1 __builtin_popcount/__builtin_popcountll
+    返回参数在二进制下1 11的个数。
+
+    3.2 __builtin_ctz / __buitlin_ctzll
+    返回参数在二进制下末尾0 00的个数。
+
+    3.3 __buitlin_clz / __buitlin_clzll
+    返回参数在二进制下前导0 00的个数。
+
+    3.4 __builtin_ffs / __buitlin_ffsll
+    返回参数在二进制下最后一个1在第几位（从后往前）。
+    注意：一般来说，builtin_ffs(x) = __builtin_ctz(x) + 1。当x = 0 x=0x=0时，builtin_ffs(x) = 0。
+
+    3.5 __builtin_parity / __builtin_parityll
+    返回参数在二进制下1 11的个数的奇偶性（偶：0，奇：1），即__builtin_parity(x) = __builtin_popcount(x) % 2。
+    P.S. 这函数，不知是哪位神仙想出来的……
+    算法衍生：
+    <a href="{{url_for('algorithm.A12')}}" class="btn btn-block btn-sm bg-white">快速幂</a>
+
+    <a href="{{url_for('algorithm.A10')}}" class="btn btn-block btn-sm bg-white">二进制状态压缩</a>
+
+                    </code>
+                </pre>
             </blockquote>
         </div>
         <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
@@ -111,6 +222,22 @@
         </div>
         <div class="tab-pane fade" id="contact6" role="tabpanel" aria-labelledby="contact-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+    二分可以简单分为二分查找与二分答案。
+    二分查找有一个前提就是数列要求是有序的
+    二分查找也称折半查找，顾名思义，就是每次查找去掉不符合条件的一半区间，直到找到答案（整数二分）或者和答案十分接近（浮点二分）。
+    int l=0,r=v.size()-1;
+    while(l < r)
+    {
+        int mid=l+r>>1;
+        if(v[mid]>=x) r=mid;
+        else l=mid+1;
+    }
+
+    二分答案则是要求 满足条件的答案是单调有序的，它的基本思想是在答案可能的范围 ([L,R]) 内二分查找答案，不断检查当前答案是否满足题目的要求，根据检查结果 更新查找的区间，最终取得最符合题目要求的答案进行输出。
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
             </blockquote>

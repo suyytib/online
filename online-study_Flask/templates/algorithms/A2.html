@@ -62,6 +62,8 @@
     加法法则：总复杂度等于量级最大的那段代码的复杂度；
     乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积。
 
+    时限 1s ，我们要保证程序运算次数不超过 3e8
+
     O(1)
     一般情况下，只要算法中不存在循环语句，递归语句，即使有成千上万行的代码，
     其时间复杂度也是O（1）。
@@ -138,29 +140,281 @@
         }
 
     衍生算法：
-        前缀和<a href="{{url_for('algorithm.all_a',A_id=2)}}" class="btn btn-block btn-sm bg-white">小试牛刀</a>
-        尺取法
-        差分<a href="https://www.luogu.com.cn/problem/P4994" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+        <a href="{{url_for('algorithm.A3')}}" class="btn btn-block btn-sm bg-white">前缀和</a>
+
+        <a href="http://t.csdnimg.cn/XIDGi" class="btn btn-block btn-sm bg-white">尺取法</a>
+
+        <a href="{{url_for('algorithm.A3')}}" class="btn btn-block btn-sm bg-white">差分</a>
                     </code>
                 </pre>
             </blockquote>
         </div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+    <a href="http://t.csdnimg.cn/IaYO2" class="btn btn-block btn-sm bg-white">模拟算法</a>
+    是按照题目的要求或者情境的设定完整实现其描述过程的方法。在所有
+    模拟的题型中，大多数的题目都是通过找规律来解决问题的，通过找规
+    律可以避免掉很多繁琐的步骤 <a href="https://www.luogu.com.cn/problem/P1003" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+
+    写模拟题时，遵循以下的建议有可能会提升做题速度：
+
+    （1）在代码中，尽量把每个部分模块化，写成函数、结构体或类。
+
+    （2）调试时分块调试。模块化的好处就是可以方便的单独调某一部分。
+
+    （5）写代码的时候一定要思路清晰，不要想到什么写什么。
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
+                <pre>
+                    <code>
+    <a href="http://t.csdnimg.cn/1k271" class="btn btn-block btn-sm bg-white">高精度计算</a>
+    
+    大数相加
+    //只能是两个正数相加
+    string add(string str1,string str2){
+        string str;
+        int len1=str1.length();
+        int len2=str2.length();
+        //前面补0，弄成长度相同
+        if(len1 < len2){
+            for(int i=1;i<=len2-len1;i++)
+            str1="0"+str1;
+        }
+        else{
+            for(int i=1;i<=len1-len2;i++)
+            str2="0"+str2;
+        }
+        len1=str1.length();
+        int cf=0;
+        int temp;
+        for(int i=len1-1;i>=0;i--){
+            temp=str1[i]-'0'+str2[i]-'0'+cf;
+            cf=temp/10;
+            temp%=10;
+            str=char(temp+'0')+str;
+        }
+        if(cf!=0)  str=char(cf+'0')+str;
+        return str;
+    }
+
+    大数相减
+    //只能是两个正数相减，而且要大减小
+    string sub(string str1,string str2){
+        string str;
+        int tmp=str1.length()-str2.length();
+        int cf=0;
+        for(int i=str2.length()-1;i>=0;i--){
+            if(str1[tmp+i] < str2[i]+cf){
+                str=char(str1[tmp+i]-str2[i]-cf+'0'+10)+str;
+                cf=1;
+            }
+            else{
+                str=char(str1[tmp+i]-str2[i]-cf+'0')+str;
+                cf=0;
+            }
+        }
+        for(int i=tmp-1;i>=0;i--){
+            if(str1[i]-cf>='0'){
+                str=char(str1[i]-cf)+str;
+                cf=0;
+            }
+            else{
+                str=char(str1[i]-cf+10)+str;
+                cf=1;
+            }
+        }
+        str.erase(0,str.find_first_not_of('0'));//去除结果中多余的前导0
+        return str;
+    }
+
+    大数相乘
+    //只能是两个正数相乘
+    string mul(string str1,string str2){
+        string str;
+        int len1=str1.length();
+        int len2=str2.length();
+        string tempstr;
+        for(int i=len2-1;i>=0;i--){
+            tempstr="";
+            int temp=str2[i]-'0';
+            int t=0;
+            int cf=0;
+            if(temp!=0){
+                for(int j=1;j<=len2-1-i;j++)
+                    tempstr+="0";
+                for(int j=len1-1;j>=0;j--){
+                    t=(temp*(str1[j]-'0')+cf)%10;
+                    cf=(temp*(str1[j]-'0')+cf)/10;
+                    tempstr=char(t+'0')+tempstr;
+                }
+                if(cf!=0) tempstr=char(cf+'0')+tempstr;
+            }
+            str=add(str,tempstr);
+        }
+        str.erase(0,str.find_first_not_of('0'));
+        return str;
+    }
+
+    大数相除
+    //两个正数相除，商为quotient,余数为residue
+    //需要高精度减法和乘法
+    void div(string str1,string str2,string &uotient,string &residue){
+        uotient=residue="";//清空
+        if(str2=="0"){//判断除数是否为0
+            uotient=residue="ERROR";
+            return;
+        }
+        if(str1=="0"){//判断被除数是否为0
+            uotient=residue="0";
+            return;
+        }
+        int res=compare(str1,str2);
+        if(res < 0){
+            uotient="0";
+            residue=str1;
+            return;
+        }
+        else if(res==0){
+            uotient="1";
+            residue="0";
+            return;
+        }
+        else{
+            int len1=str1.length();
+            int len2=str2.length();
+            string tempstr;
+            tempstr.append(str1,0,len2-1);
+            for(int i=len2-1;i < len1;i++){
+                tempstr=tempstr+str1[i];
+                tempstr.erase(0,tempstr.find_first_not_of('0'));
+                if(tempstr.empty())
+                tempstr="0";
+                for(char ch='9';ch>='0';ch--){//试商
+                    string str,tmp;
+                    str=str+ch;
+                    tmp=mul(str2,str);
+                    if(compare(tmp,tempstr)<=0){//试商成功
+                        uotient=uotient+ch;
+                        tempstr=sub(tempstr,tmp);
+                        break;
+                    }
+                }
+            }
+            residue=tempstr;
+        }
+        uotient.erase(0,uotient.find_first_not_of('0'));
+        if(uotient.empty()) uotient="0";
+    }
+    
+                    </code>
+                </pre>
             </blockquote>
         </div>
         <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+    <a href="http://t.csdnimg.cn/CTlui" class="btn btn-block btn-sm bg-white">递归</a>
+
+    递归在于把问题分解成规模更小、具有与原来问题相同解法的问题，如二分查找以及求
+    集合的子集问题。这些都是不断的把问题规模变小，新问题与原问题有着相同的解法。
+    但是并不是所有所有可以分解的子问题都能使用递归来求解。
+    
+    一般使用递归求解问题需要满足以下的条件：
+    
+    1.可以把要解决的问题转化为一个子问题，而这个子问题的解决方法仍与原来的解决方
+    法相同，只是问题的规模变小了。
+
+    2.原问题可以通过子问题解决而组合解决。
+
+    3.存在一种简单的情境，使问题在简单情境下退出。
+
+    回溯
+
+    为了求得问题的解，先选择某一种可能情况向前探索。在探索过程中，一旦发现原来的选
+    择是错误的，就退回上一步重新选择条件，继续向前探索，如此反复进行，直至得到解或
+    证明无解。
+
+    对递归的改进--记忆化 <a href="https://www.luogu.com.cn/problem/P1464" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+
+    递归的过程中做了重复工作。在子问题得到解决时，就保存结果，再次需要这个结果时，
+    直接返回保存的结果，不继续递归下去。
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
+                <pre>
+                    <code>
+    递推 <a href="https://www.luogu.com.cn/problem/P1255" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+    
+    递推算法是一种用若干步可重复运算来描述复杂问题的方法。递推是序列计算中的一种常
+    用算法。通常是通过计算机前面的一些项来得出序列中的指定象的值。
+
+    递归与递推区别
+    
+    相对于递归算法,递推算法免除了数据进出栈的过程，也就是说,不需要函数不断的向边界
+    值靠拢,而直接从边界出发,直到求出函数值。
+
+    递归实现指数型枚举
+    每个数有【选与不选】两种情况，即：共有2^n种枚举方案；
+    转换成一棵【递归搜索树】的 <a href="{{url_for('algorithm.A5')}}" class="btn btn-block btn-sm bg-white">dfs</a> 问题。
+
+    递归实现排列型枚举 <a href="https://www.luogu.com.cn/problem/P1706" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+    字典序最小，只需要在遍历的时候，从小到大枚举即可，就能使得枚举方案满足字典序
+    从小到大 
+
+    递归实现组合型枚举 <a href="https://www.luogu.com.cn/problem/P1157" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+    不考虑顺序的枚举，是组合型枚举
+
+                    </code>
+                </pre>
             </blockquote>
         </div>
         <div class="tab-pane fade" id="contact2" role="tabpanel" aria-labelledby="contact-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+    <a href="http://t.csdnimg.cn/XzgcG" class="btn btn-block btn-sm bg-white">进制转换</a>
+    
+    八进制数是一种逢八进一的计数体制，基数是8，用0~7表示，如077。
+    八进制数以数字0开头。
+
+    十六进制数是一种逢十六进一的计数体制，基数是16，用0~9,A~F表示
+    十六进制数以数字0和字母x的组合0x或0X开头。其中字母x是不区分大小写的
+    但是对于八进制的输出是字母o，而不是数字0
+
+    十进制转R进制:除R取余法，结果倒过来取
+
+    二进制转四进制:
+    第一步：判断字符串的长度是否为2的倍数，如果不是则补0。
+    第二步：每两位2进制数转换成1位的4进制数输出。即转成对应10进制即可
+
+    二进制转八进制:
+    第一步：判断字符串的长度是否为3的倍数，如果不是则补0。
+    第二步：每三位2进制数转换成1位的8进制数输出。即转成对应10进制即可
+
+    二进制转十六进制:
+    第一步：判断字符串的长度是否为4的倍数，如果不是则补0。
+    第二步：每四位2进制数转换成1位的16进制数（借助10进制在转）输出。
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
+                <pre>
+                    <code>
+    竞赛掌握 <a href="https://www.luogu.com.cn/problem/P1143" class="btn btn-block btn-sm bg-white">小试牛刀</a>
+    
+    printf("%o %d %x",a,a,a); 分别转8 10 16进制
+
+    任意进制转十进制 <a href="https://www.apiref.com/cpp-zh/cpp/string/byte/strtol.html" class="btn btn-block btn-sm bg-white">strtol</a>
+    
+    十进制转任意进制 <a href="https://www.apiref.com/c-zh/itoa.htm" class="btn btn-block btn-sm bg-white">itoa</a>
+                    </code>
+                </pre>
             </blockquote>
         </div>
     </div>

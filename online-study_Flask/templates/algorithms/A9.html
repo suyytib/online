@@ -67,18 +67,72 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade  show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+for(int i=1;i<=n;i++)
+{
+    for(int c=C;c>=0;c--)//注意倒序
+    {
+        if(c>=w[i])
+        {
+            f[c]=max(f[c],[c-w[i]]+v[i]);
+        }
+    }
+}
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
             </blockquote>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+for(int i=1;i<=n;i++)
+{
+    for(int c=0;c<=C;c++)
+    {
+        if(c>=w[i])
+        {
+            f[c]=max(f[c],f[c-w[i]]+v[i]);
+        }
+    }
+}
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
             </blockquote>
         </div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+for(int i=1;i<=n;i++)
+scanf("%d%d%d",&a[i],&w[i],&v[i]);
+for(int i=1;i<=n;i++)
+if(a[i]*w[i]>C)
+{//当完全背包处理 
+    for(int c=w[i];c<=C;c++)
+    f[c]=max(f[c],f[c-w[i]]+v[i]);
+}
+else
+{
+    int k=1,ans=a[i];
+    while(k < ans)
+    {   //是否取一个重量为k*w[i],价值为k*v[i]的物品呢   01背包 
+        for(int c=C;c>=k*w[i];c--)
+        f[c]=max(f[c],f[c-k*w[i]]+k*v[i]);
+        ans-=k;
+        k+=k;
+    }
+    //剩下的物品当成一个物品
+    for(int c=C;c>=ans;c--)
+    f[c]=max(f[c],f[c-ans*w[i]]+ans*v[i]); 
+}
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
             </blockquote>
@@ -97,12 +151,33 @@
         </div>
         <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab">
             <blockquote class="blockquote left">
+                
             </blockquote>
             <blockquote class="blockquote right">
             </blockquote>
         </div>
         <div class="tab-pane fade" id="contact4" role="tabpanel" aria-labelledby="contact-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+for(iny i=1;i < N;i++)
+{
+    if(物品i属于0/1背包)
+    {
+        按照0/1背包做法取物品i
+    }
+    if(物品i属于完全背包)
+    {
+        按照完全背包做法取物品i
+    }
+    if(物品i属于多重背包)
+    {
+        按照多重背包做法取物品i
+    }
+}
+
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
             </blockquote>
@@ -115,6 +190,14 @@
         </div>
         <div class="tab-pane fade" id="contact6" role="tabpanel" aria-labelledby="contact-tab">
             <blockquote class="blockquote left">
+                <pre>
+                    <code>
+for(int k=1;K<=K;K++)//每一个组
+  for(int c=C;c>=0;c--)
+    for(所有属于第k组的物品)
+      if(c>=w[i]) f[c]=max(f[c],f[c-w[i]+v[i]);
+                    </code>
+                </pre>
             </blockquote>
             <blockquote class="blockquote right">
             </blockquote>
