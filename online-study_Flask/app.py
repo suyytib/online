@@ -1,6 +1,7 @@
 from flask import Flask
 from blueprints.login import bp as login_bp
 from blueprints.box import bp as box_bp
+from blueprints.deplaning import bp as deplaning_bp
 from blueprints.algorithm import bp as algorithm_bp
 from table_config import db,migrate,mail
 import config
@@ -13,6 +14,7 @@ from model import User
 app = Flask(__name__)
 app.register_blueprint(login_bp)
 app.register_blueprint(box_bp)
+app.register_blueprint(deplaning_bp)
 app.register_blueprint(algorithm_bp)
 app.config.from_object(config)
 db.init_app(app)
