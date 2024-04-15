@@ -18,7 +18,7 @@ bp=Blueprint("login",__name__,url_prefix='/login')
 def login():
     return render_template('login/login.html',is_error=False)
 
-@bp.route('/captcha/',methdos=["POST"])
+@bp.route('/captcha/',methods=["POST"])
 def login_captcha():
     weqwe=request.form.get("quedin")
     form=Login_Form(request.form)
