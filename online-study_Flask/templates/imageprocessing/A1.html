@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+灰度化
+{% endblock %}
+
+
+{% block head %}
+<!-- 加载注册用的js代码 -->
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+<script src="../../static/js/choujiang.js"></script>
+<script src="../../static/js/bootstrap.js"></script>
+<script src="../../static/js/tupian.js"></script>
+<link rel="stylesheet" href="../../static/css/shuzi.css" />
+<link rel="stylesheet" href="../../static/css/root.css" />
+
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap.min.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.css" />
+<link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.rtl.css" />
+{% endblock %}
+
+{% block body%}
+<div>
+    <a href="{{url_for('root')}}" class="btn btn-block btn-lg bg-white mt-4">返回</a>
+    <div class="tab-content" id="myTabContent" style="position:absolute;left:0;">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="card-body">
+                <form action="{{url_for('box.Grayscale')}}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="pic"></label>
+                        <input type="file" name="pic" class="btn btn-block btn-lg bg-white mt-4"
+                            id="exampleFormControlFile1" onchange="show(this)" />
+                    </div>
+                    <div id="display_none"></div>
+                    <button type="submit" class="btn btn-block btn-lg bg-white mt-4">
+                        灰度处理
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content" id="myTabContent" style="position:absolute;left:50%;background-color: dodgerblue;">
+        <pre>
+            <code>
+    灰度化处理就是将一幅彩色图像转化为灰度图像的过程。
+    大多数的医学图像RGB提供的信息量很少（几乎没有），所以可以直接灰度图来进行后续计算.
+
+    Matlab实现彩色图像转换为灰度图像
+    
+    RGB = imread('tuxiang.jpg');%将图像读入工作区
+    Y = rgb2gray(RGB);%将图像灰度化
+    imshow(Y)%显示灰度图像
+
+    
+            </code>
+        </pre>
+    </div>
+</div>
+{% endblock %}
