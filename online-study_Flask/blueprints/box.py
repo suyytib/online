@@ -1,6 +1,5 @@
 """ import numpy as np """
 from flask import Blueprint, request
-from ctypes import *
 """ from skimage import io """
 from flask import render_template
 """ from keras.models import load_model
