@@ -8,6 +8,5 @@ from functool import captcha__is_login
 # import tensorflow as tf
 bp=Blueprint("imageprocessing",__name__,url_prefix="/imageprocessing")
 @bp.route('/')
-@captcha__is_login
 def imageprocessing_root():
     return render_template("/imageprocessing.html")
