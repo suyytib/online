@@ -5,8 +5,10 @@ from ctypes import *
 from flask import render_template
 
 from functool import captcha__is_login
+from model import Comment
 # import tensorflow as tf
 bp=Blueprint("imageprocessing",__name__,url_prefix="/imageprocessing")
 @bp.route('/')
 def imageprocessing_root():
-    return render_template("/imageprocessing.html")
+    comment = Comment.query.filter(Comment.tieba_id == 0)
+    return render_template(f'imageprocessing.html', comment=comment)
