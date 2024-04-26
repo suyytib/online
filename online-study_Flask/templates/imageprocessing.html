@@ -1266,7 +1266,7 @@ head %}
         <div>
             <fieldset class="layui-elem-field layui-field-title" style="background-color: aliceblue;">
                 <legend>请登录后发表评论</legend>
-                <input type="hidden" id="tieba_id" name="tiebaId" value="1">
+                <input type="hidden" id="tieba_id" name="tiebaId" value="0">
                 <textarea id="lay_edit" lay-verify="content" class="layui-textarea" name="text"></textarea>
                 <button type="button" class="layui-btn comSub">提交评论</button>
             </fieldset>
@@ -1311,7 +1311,7 @@ head %}
                 } else {
                     $.post("/tieba/comment", { text: text, tiebaId: tiebaId }, function (result) {
                         if (result.success) {
-                            window.location.href = '/deeplearning/A1';
+                            window.location.href = '/imageprocessing';
                         }
                     })
                 }
