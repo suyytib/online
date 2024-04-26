@@ -1,8 +1,8 @@
 # 数据库配置
-HOSTNAME="103.153.138.166"
+HOSTNAME="localhost"
 PORT=3306
-USERNAME="cj"
-PASSWORD="123456"
+USERNAME="root"
+PASSWORD="Na.d7.1mW"
 DATABASE="temp"
 CHARSET="utf8mb4"
 # flask只读取下面的配置连接数据库,上面仅是完善下面配置用的
