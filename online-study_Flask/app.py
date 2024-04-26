@@ -33,8 +33,10 @@ def captcha_login():
         setattr(g,"user_id",user.id)
     else:
         setattr(g,"user_id",None)
+        
 @app.route('/')
 def root():
-    return render_template('root.html')
+    return render_template("/imageprocessing.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
