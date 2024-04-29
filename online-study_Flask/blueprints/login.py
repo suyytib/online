@@ -44,8 +44,8 @@ def login_captcha():
         print(user)
         if user and (user.password==form.user_passwd.data):
             session["user_id"]=user.id
-            return render_template('/imageprocessing.html')
-        return redirect(url_for('imageprocessing.imageprocessing_root'))
+            return render_template('/root.html')
+        return redirect(url_for('root'))
     else:
         # 将表单验证的错误消息发送给登录网页
         flash(message=form.errors)
