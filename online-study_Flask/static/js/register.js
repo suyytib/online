@@ -35,6 +35,7 @@ function get_captcha() {
     });
   });
 }
+
 $(function () {
   // 延迟函数在网页在加载完毕后执行
   get_captcha();
