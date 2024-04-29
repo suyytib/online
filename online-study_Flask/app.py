@@ -36,9 +36,7 @@ def captcha_login():
         
 @app.route('/')
 def root():
-    comment = Comment.query.filter(Comment.tieba_id == 0)
-    return render_template(f'imageprocessing.html', comment=comment)
-
+    return render_template("root.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
