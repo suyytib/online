@@ -18,3 +18,12 @@
     box-shadow: 0 0 10px 6px #999;
     background-color:bisque;
 }
+
+.onlinetest {
+	padding-right: 100px;
+    padding-left: 100px;
+    padding-top: 40px;
+    position:relative;
+    box-shadow: 0 0 10px 6px #999;
+    background-color:bisque;
+}
