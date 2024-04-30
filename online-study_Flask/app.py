@@ -5,6 +5,7 @@ from blueprints.tieba import bp as tieba_bp
 from blueprints.deeplearning import bp as deeplearning_bp
 from blueprints.deplaning import bp as deplaning_bp
 from blueprints.imageprocessing import bp as imageprocessing_bp
+from blueprints.onlinetesting import bp as onlinetesting
 from table_config import db,migrate,mail
 import config
 from flask import session
@@ -19,6 +20,7 @@ app.register_blueprint(box_bp)
 app.register_blueprint(tieba_bp)
 app.register_blueprint(deplaning_bp)
 app.register_blueprint(deeplearning_bp)
+app.register_blueprint(onlinetesting)
 app.register_blueprint(imageprocessing_bp)
 app.config.from_object(config)
 db.init_app(app)

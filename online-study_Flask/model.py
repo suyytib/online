@@ -30,3 +30,9 @@ class Comment(db.Model):
     # 关联博客id
     tieba_id = db.Column(db.Integer)
     user = db.Column(db.String(256))
+
+class Questions(db.Model):
+    __tablename__ = 'questions'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    answer = db.Column(db.String(256))    # 评论内容
+    question = db.Column(db.String(256))
