@@ -8,7 +8,15 @@ function show(f) {
         $("#display_none").show();
         rd.onloadend = function (e) {
             //加载完毕之后，在div中添加一个元素
-            $("#display_none").html("<img src='" + this.result + "' width=\"400\" height=\"400\"/>")
+            $("#display_none").html("<img src='" + this.result + "' max-width=\"400\" max-height=\"400\"/>")
         }
     }
+}
+
+
+function onlinetesting_testing() {
+    $("#button").click(function (event) {
+        var $this = $(this);
+        document.getElementById("testing").style.visibility = "visible";//显示
+    })
 }
