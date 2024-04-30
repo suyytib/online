@@ -49,3 +49,8 @@ def A7():
 @captcha__is_login
 def A8():
     return render_template("/deplaning/A8.html")
+
+@bp.route("/A9")
+@captcha__is_login
+def A9():
+    return render_template("/deplaning/A9.html")

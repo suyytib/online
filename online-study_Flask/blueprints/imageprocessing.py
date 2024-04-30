@@ -9,6 +9,7 @@ from model import Comment
 # import tensorflow as tf
 bp=Blueprint("imageprocessing",__name__,url_prefix="/imageprocessing")
 @bp.route('/')
+@captcha__is_login
 def imageprocessing_root():
     comment = Comment.query.filter(Comment.tieba_id == 0)
     return render_template(f'imageprocessing.html', comment=comment)

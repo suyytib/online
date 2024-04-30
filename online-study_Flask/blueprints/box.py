@@ -1,6 +1,11 @@
 """ import numpy as np """
+
 from flask import Blueprint, request
 from ctypes import *
+from keras.models import load_model
+import skimage.io as io  
+import numpy as np
+import tensorflow as tf
 """ from skimage import io """
 from flask import render_template
 """ from keras.models import load_model
@@ -18,23 +23,6 @@ def choujiang():
 @bp.route('/text/',methods=["GET","POST"]) 
 def text():
     return render_template('/root/text.html')
-
-@bp.route('/Digitalprediction/',methods=["GET","POST"])
-def Digitalprediction():
-    if request.method == "GET":
-        return render_template('/deeplearning/A1.html')
-    """ img=request.files.get('pic')
-    img.save("1.jpg")
-    img_src = io.imread("1.jpg")
-    print(img_src.shape)
-    img_src=img_src[:,:,1]
-    print(img_src.shape)
-    X=tf.reshape(img_src,(1,28,28))
-    model = load_model('modea.h5')
-    y_pred=np.argmax(model.predict(X),axis=1)
-    # predict using the loaded model
-    context = {'y_pred': str(y_pred[0])}
-    return render_template('/deeplearning/A1.html',**context) """
 
 @bp.route('/Grayscale/',methods=["GET","POST"]) 
 def Grayscale():
