@@ -33,7 +33,7 @@
         <div class="navbar-collapse offcanvas-collapse">
             <ul class="navbar-nav ml-auto align-items-lg-center">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">在线测试</a>
+                    <a href="{{url_for('onlinetesting.onlinetesting')}}" class="nav-link">在线测试</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="false"
@@ -62,6 +62,9 @@
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{url_for('deplaning.A8')}}">女体</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{url_for('deplaning.A9')}}">造影</a>
                         </li>
                     </ul>
                 </li>
@@ -101,7 +104,7 @@
 </nav>
 <div class="container">
     <aside class="col-xs-3" style="position: fixed;">
-        <h3 class="h3 text-dark pt-3 pb-5">深度学习经典入门项目—手写数字识别</h1>
+        <h3 class="h3 text-white pt-3 pb-5">深度学习经典入门项目—手写数字识别</h1>
             <div class="scroll-wrapper" style="position: relative;">
                 <div class="scroll-content"
                     style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 430px;">
@@ -169,6 +172,22 @@
 
                 </p>
             </pre>
+            <div class="card-body">
+                <h4 class="h3 text-dark pt-3 pb-5">请输入一张28*28大小的图片 如下：</h4>
+                <img src="/static/images/shuzi6.jpg">
+                <form action="{{url_for('deeplearning.A3')}}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="pic"></label>
+                        <input type="file" name="pic" class="btn btn-block btn-lg bg-white mt-4"
+                            id="exampleFormControlFile1" onchange="show(this)" />
+                    </div>
+                    <div id="display_none"></div>
+                    <button type="submit" class="btn btn-block btn-lg bg-white mt-4">
+                        开始
+                    </button>
+                    <h4 class="h3 text-dark pt-3 pb-5">预测结果为：{{ y_pred }}</h4>
+                </form>
+            </div>
         </div>
         <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
             <pre>
@@ -272,13 +291,16 @@
         </div>
         <div class="tab-pane fade" id="contact7" role="tabpanel" aria-labelledby="contact-tab">
             <pre>
+                <code>
                 <h1>训练模型与评估模型</h1>
     #训练顺序网络模型,其中,设置批量大小为32,迭代次数为5
     model.fit(x_train,y_train,batch_size=32,epochs=5)
 
     #使用测试数据集对顺序网络模型进行评估,其中,设置批量大小为32,日志显示模式为2
     model.evaluate(x_test,y_test,batch_size=32,verbose=2)
-                <code>
+                </code>
+            </pre>
+        </div>
         <div style="height: 200px;"></div>
         <div>
             <fieldset class="layui-elem-field layui-field-title" style="background-color: aliceblue;">

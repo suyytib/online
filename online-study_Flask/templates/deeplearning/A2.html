@@ -25,7 +25,7 @@ head %}
         <div class="navbar-collapse offcanvas-collapse">
             <ul class="navbar-nav ml-auto align-items-lg-center">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">在线测试</a>
+                    <a href="{{url_for('onlinetesting.onlinetesting')}}" class="nav-link">在线测试</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="false"
@@ -54,6 +54,9 @@ head %}
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{url_for('deplaning.A8')}}">女体</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{url_for('deplaning.A9')}}">造影</a>
                         </li>
                     </ul>
                 </li>
@@ -93,7 +96,7 @@ head %}
 </nav>
 <div class="container">
     <aside class="col-xs-3" style="position: fixed;">
-        <h3 class="h3 text-dark pt-3 pb-5">基于U-net的CT肿瘤图像分割</h1>
+        <h3 class="h3 text-white pt-3 pb-5">基于U-net的CT肿瘤图像分割</h1>
             <div class="scroll-wrapper" style="position: relative;">
                 <div class="scroll-content"
                     style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 430px;">
@@ -153,6 +156,27 @@ head %}
     
                     </p>
                 </pre>
+            <div class="card-body">
+                <h4 class="h3 text-dark pt-3 pb-5">请输入一张CT图 如下：</h4>
+                <img src="/static/images/text.jpg" style="width: 350px;">
+                <form action="{{url_for('deeplearning.A2')}}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="pic"></label>
+                        <input type="file" name="pic" class="btn btn-block btn-lg bg-white mt-4"
+                            id="exampleFormControlFile1" onchange="show(this)" />
+                    </div>
+                    <div class="container">
+                        <div id="display_none" style="position:absolute;left:15%;width: 350px;"></div>
+                        <div id="testing" style="position:absolute;visibility: hidden;left:65%;width: 350px;">
+                            <img src="/static/images/text.jpg">
+                        </div>
+                    </div>
+                    <a type="submit" class="btn btn-block btn-lg bg-white mt-4" id="button"
+                        onclick="onlinetesting_testing()">
+                        开始
+                    </a>
+                </form>
+            </div>
         </div>
         <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
             <pre>
@@ -496,7 +520,6 @@ head %}
         </div>
     </div>
 </div>
-
 <script>
     $(function () {
         $(".myText").each(function () {

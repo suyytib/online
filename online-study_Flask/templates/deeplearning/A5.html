@@ -25,7 +25,7 @@ head %}
         <div class="navbar-collapse offcanvas-collapse">
             <ul class="navbar-nav ml-auto align-items-lg-center">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">在线测试</a>
+                    <a href="{{url_for('onlinetesting.onlinetesting')}}" class="nav-link">在线测试</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="false"
@@ -54,6 +54,9 @@ head %}
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{url_for('deplaning.A8')}}">女体</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{url_for('deplaning.A9')}}">造影</a>
                         </li>
                     </ul>
                 </li>
@@ -93,7 +96,7 @@ head %}
 </nav>
 <div class="container">
     <aside class="col-xs-3" style="position: fixed;">
-        <h3 class="h3 text-dark pt-3 pb-5">使用Tansformer分割三维腹部多器官</h1>
+        <h3 class="h3 text-white pt-3 pb-5">使用Tansformer分割三维腹部多器官</h1>
             <div class="scroll-wrapper" style="position: relative;">
                 <div class="scroll-content"
                     style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 430px;">
@@ -513,7 +516,6 @@ head %}
         </div>
     </div>
 </div>
-
 <script>
     $(function () {
         $(".myText").each(function () {
