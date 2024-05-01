@@ -1,10 +1,6 @@
 # from torchvision.transforms import transforms
 from flask import Blueprint, request
 from flask import render_template
-import numpy as np
-import tensorflow as tf
-from keras.models import load_model
-import skimage.io as io  
 from functool import captcha__is_login
 from model import Comment
 # import tensorflow as tf
