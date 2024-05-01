@@ -172,22 +172,6 @@
 
                 </p>
             </pre>
-            <div class="card-body">
-                <h4 class="h3 text-dark pt-3 pb-5">请输入一张28*28大小的图片 如下：</h4>
-                <img src="/static/images/shuzi6.jpg">
-                <form action="{{url_for('deeplearning.A3')}}" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="pic"></label>
-                        <input type="file" name="pic" class="btn btn-block btn-lg bg-white mt-4"
-                            id="exampleFormControlFile1" onchange="show(this)" />
-                    </div>
-                    <div id="display_none"></div>
-                    <button type="submit" class="btn btn-block btn-lg bg-white mt-4">
-                        开始
-                    </button>
-                    <h4 class="h3 text-dark pt-3 pb-5">预测结果为：{{ y_pred }}</h4>
-                </form>
-            </div>
         </div>
         <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
             <pre>
