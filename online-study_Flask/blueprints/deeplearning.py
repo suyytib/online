@@ -21,18 +21,6 @@ def A2():
     if request.method == "GET":
         comment = Comment.query.filter(Comment.tieba_id == 2)
         return render_template(f'/deeplearning/A2.html', comment=comment)
-    else:
-        img=request.files.get('pic')
-        img.save("1.jpg")
-        img_src = io.imread("1.jpg")
-        print(img_src.shape)
-        img_src=img_src[:,:,1]
-        print(img_src.shape)
-        X=tf.reshape(img_src,(1,28,28))
-        model = load_model('modea.h5')
-        y_pred=np.argmax(model.predict(X),axis=1)
-        # predict using the loaded model
-        return render_template('/deeplearning/A2.html')
 
 @bp.route('/A3',methods=["GET","POST"])
 @captcha__is_login
@@ -40,19 +28,6 @@ def A3():
     if request.method == "GET":
         comment = Comment.query.filter(Comment.tieba_id == 3)
         return render_template(f'/deeplearning/A3.html', comment=comment)
-    else:
-        img=request.files.get('pic')
-        img.save("1.jpg")
-        img_src = io.imread("1.jpg")
-        print(img_src.shape)
-        img_src=img_src[:,:,1]
-        print(img_src.shape)
-        X=tf.reshape(img_src,(1,28,28))
-        model = load_model('modea.h5')
-        y_pred=np.argmax(model.predict(X),axis=1)
-        # predict using the loaded model
-        context = {'y_pred': str(y_pred[0])}
-        return render_template('/deeplearning/A3.html',**context)
 
 
 @bp.route('/A4')
