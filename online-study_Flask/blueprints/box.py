@@ -2,11 +2,6 @@
 
 from flask import Blueprint, request
 from ctypes import *
-from keras.models import load_model
-import skimage.io as io  
-import numpy as np
-import tensorflow as tf
-""" from skimage import io """
 from flask import render_template
 """ from keras.models import load_model
 import tensorflow as tf
