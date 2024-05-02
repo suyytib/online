@@ -44,8 +44,8 @@ def login_captcha():
         print(user)
         if user and (user.password==form.user_passwd.data):
             session["user_id"]=user.id
-            return render_template('/root.html')
-        return redirect(url_for('root'))
+            return redirect(url_for('root'))
+        return redirect(url_for('login.login'))
     else:
         # 将表单验证的错误消息发送给登录网页
         flash(message=form.errors)
@@ -94,7 +94,7 @@ def email_send():
     number_list=[str(i) for i in range(10)]
     captcha=''.join(random.choices(number_list,k=6))
     # 生成邮箱消息
-    msg=Message(subject='懒人tool网站验证码发送',body=f'验证码:{captcha},谢谢您注册懒人tool在线学习平台,望您使用开心',
+    msg=Message(subject='医影智学tool网站验证码发送',body=f'验证码:{captcha},谢谢您注册医影智学tool在线学习平台,望您使用开心',
                 recipients=[email])
     # 发送邮箱
     mail.send(msg)
