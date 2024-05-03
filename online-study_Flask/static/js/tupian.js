@@ -8,7 +8,7 @@ function show(f) {
         $("#display_none").show();
         rd.onloadend = function (e) {
             //加载完毕之后，在div中添加一个元素
-            $("#display_none").html("<img src='" + this.result + "' max-width=\"400\" max-height=\"400\"/>")
+            $("#display_none").html("<img src='" + this.result + "' style=\"max-width:250px;max-height:250px;\"/>")
         }
     }
 }
