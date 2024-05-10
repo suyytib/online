@@ -13,8 +13,7 @@ function show(f) {
     }
 }
 
-
-function onlinetesting_testing() {
+function onlinetesting() {
     $("#button").click(function (event) {
         var $this = $(this);
         document.getElementById("testing").style.visibility = "visible";//显示
