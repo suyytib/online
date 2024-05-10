@@ -95,7 +95,7 @@ head %}
     </div>
 </nav>
 <div class="container">
-    <aside class="col-xs-3" style="position: fixed;">
+    <aside class="col-xs-3">
         <h3 class="h3 text-white pt-3 pb-5">基于U-net的CT肿瘤图像分割</h1>
             <div class="scroll-wrapper" style="position: relative;">
                 <div class="scroll-content"
@@ -156,6 +156,29 @@ head %}
     
                     </p>
                 </pre>
+            <!-- <div class="card-body">
+                <h4 class="h3 text-dark pt-3 pb-5">请输入一张CT图 如下：</h4>
+                <img src="/static/images/text.jpg" style="width: 350px;">
+                <form action="{{url_for('deeplearning.A2')}}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="pic"></label>
+                        <input type="file" name="pic" class="btn btn-block btn-lg bg-white mt-4"
+                            id="exampleFormControlFile1" onchange="show(this)" />
+                    </div>
+                    <div id="display_none" style="position:absolute;left: 55%;"></div>
+                    <div id="testing" style="position:absolute; left: 50%;"></div>
+                    <button type="submit" class="btn btn-block btn-lg bg-white mt-4">
+                        开始
+                    </button>
+                    <div class="form-group">
+                        <p>{{ pic_error }}</p>
+                    </div>
+                    <a type="button" class="btn btn-block btn-lg bg-white mt-4" id="button"
+                        onclick="onlinetesting_testing()">
+                        查看
+                    </a>
+                </form>
+            </div> -->
         </div>
         <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
             <pre>
@@ -505,8 +528,6 @@ head %}
             $(this).html($(this).text());
         });
     })
-
-
     layui.use(['layedit', 'form'], function () {
         var form = layui.form;
         var layedit = layui.layedit;
@@ -533,5 +554,15 @@ head %}
             });
         })
     });
+    function onlinetesting_testing() {
+            var rd = new FileReader();//创建文件读取对象
+            var files = '{{ picture }}';
+            if (files == 0)
+                alert("请输入图片");
+            else {
+                $("#testing").show();
+                $("#testing").html("<img src=\"data:image/png;base64,"+files+"\" style=\"max-width:250px;max-height:250px;\"/>")
+            }
+    }
 </script>
 {% endblock %}
