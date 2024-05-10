@@ -3,7 +3,6 @@ from flask import Flask
   
 # 导入不同的蓝图（Blueprints），它们表示应用程序的不同部分或功能。每个蓝图都是一个可重用的小应用程序  
 from blueprints.login import bp as login_bp  
-from blueprints.box import bp as box_bp  
 from blueprints.tieba import bp as tieba_bp  
 from blueprints.deeplearning import bp as deeplearning_bp  
 from blueprints.deplaning import bp as deplaning_bp  
@@ -32,8 +31,7 @@ from model import User
 app = Flask(__name__)  
   
 # 注册蓝图到 Flask 应用程序，使它们成为应用程序的一部分  
-app.register_blueprint(login_bp)  
-app.register_blueprint(box_bp)  
+app.register_blueprint(login_bp)   
 app.register_blueprint(tieba_bp)  
 app.register_blueprint(deplaning_bp)  
 app.register_blueprint(deeplearning_bp)  
