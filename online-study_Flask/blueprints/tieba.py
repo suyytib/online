@@ -38,7 +38,6 @@ def comment():
     tiebaId = request.values.get('tiebaId')
     user=User.query.get(g.user_id)
     username=user.username
-    print(username)
     # 获取当前系统时间
     create_time = time.strftime("%Y-%m-%d %H:%M:%S")
     comment = Comment(text=text, create_time=create_time, tieba_id=tiebaId, user=username)
