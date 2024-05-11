@@ -7,6 +7,7 @@ head %}
 <script src="//unpkg.com/layui@2.9.8/dist/layui.js"></script>
 <script src="../../static/js/editormd.js"></script>
 <script src="../../static/js/layedit.js"></script>
+<script src="../../static/js/imageprocessing.js"></script>
 
 <link href="//unpkg.com/layui@2.9.8/dist/css/layui.css" rel="stylesheet">
 <link rel="stylesheet" href="../../static/css/jquery-scrollbar.css" />
@@ -304,7 +305,7 @@ head %}
     自1895年X线发现后所开创的医学图像学，近二十多年来发展异常迅速，也成为现代医学诊断，治疗，手术等方面最重要最有力的工具。把成像原理和图像性质综合起来，医学成像不仅是静态的组织结构成像，而且可以实现动态图像，功能成像。
 
                 </p>
-            </pre>
+                </pre>
         </div>
         <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
             <pre>
@@ -634,7 +635,7 @@ head %}
         
     通常称其为能量谱。
     
-    （3）.离散傅里叶变换
+    （3）离散傅里叶变换
 
     离散傅里叶变换（Discrete Fourier Transform，DFT）是对连续信号傅里叶变换的一种离散化处理，通常用于数字信号处理。它将一个有限长的序列转换为另一个有限长的序列，这两个序列在数值上是相等的。
 
@@ -723,6 +724,20 @@ head %}
 
                 </p>
             </pre>
+            <div class="card-body">
+                <h4 class="h3 text-dark pt-3 pb-5" name="titles">平滑处理</h4>
+                <h4 class="h3 text-dark pt-3 pb-5">请输入一张图像 如下：</h4>
+                <img src="/static/images/text.jpg" style="width: 250px;">
+                <div class="form-group">
+                    <label for="pic1"></label>
+                    <input type="file" name="pic2" class="btn btn-block btn-lg bg-white mt-4"
+                        id="exampleFormControlFile1" onchange="post_pic2(this)" />
+                </div>
+                <div class="container">
+                    <div id="display_none4" style="left: 5%;position:absolute;"></div>
+                    <div id="display_none5" style="left: 65%;position:absolute;"></div>
+                </div>
+            </div>
         </div>
         <div class="tab-pane fade" id="contact20" role="tabpanel" aria-labelledby="contact-tab">
             <pre>
@@ -734,6 +749,20 @@ head %}
 
                 </p>
             </pre>
+            <div class="card-body">
+                <h4 class="h3 text-dark pt-3 pb-5" name="titles">锐化处理</h4>
+                <h4 class="h3 text-dark pt-3 pb-5">请输入一张图像 如下：</h4>
+                <img src="/static/images/text.jpg" style="width: 250px;">
+                <div class="form-group">
+                    <label for="pic1"></label>
+                    <input type="file" name="pic1" class="btn btn-block btn-lg bg-white mt-4"
+                        id="exampleFormControlFile1" onchange="post_pic1(this)" />
+                </div>
+                <div class="container">
+                    <div id="display_none2" style="left: 5%;position:absolute;"></div>
+                    <div id="display_none3" style="left: 65%;position:absolute;"></div>
+                </div>
+            </div>
         </div>
         <div class="tab-pane fade" id="contact21" role="tabpanel" aria-labelledby="contact-tab">
             <pre>
@@ -809,7 +838,27 @@ head %}
     [2]中值滤波：将每个像素周围一个固定大小的邻域内的像素值进行排序，取中间值来代替该像素的值；
     
     [3]高斯滤波：利用高斯函数对像素周围的邻域进行加权平均，以达到平滑的效果。
-    
+
+
+                </p>
+            </pre>
+            <div class="card-body">
+                <h4 class="h3 text-dark pt-3 pb-5" name="titles">高斯模糊</h4>
+                <h4 class="h3 text-dark pt-3 pb-5">请输入一张图像 如下：</h4>
+                <img src="/static/images/text.jpg" style="width: 250px;">
+                <div class="form-group">
+                    <label for="pic"></label>
+                    <input type="file" name="pic" class="btn btn-block btn-lg bg-white mt-4"
+                        id="exampleFormControlFile1" onchange="post_pic(this)" />
+                </div>
+                <div class="container">
+                    <div id="display_none" style="left: 5%;position:absolute;"></div>
+                    <div id="display_none1" style="left: 65%;position:absolute;"></div>
+                </div>
+            </div>
+            <pre>
+                <p style="font-size: large;"> 
+                
     （2）彩色图像中值滤波
     
     彩色图像中值滤波是一种基于排序统计学原理的图像降噪方法。它的主要思想是在一个局部窗口内，将所有像素的值按照大小顺序排列，然后用中间值来代替当前像素的值。对于彩色图像，可以分别对每个通道进行中值滤波，或者将RGB三个通道合并为灰度图像后再进行中值滤波。
@@ -1254,10 +1303,47 @@ head %}
                 <p style="font-size: large;">
     医学图像配准是指对于一幅医学图像通过一种或一系列的空间变换,使它与另一幅医学图像上的对应点达到空间上的一致。配准的结果应使两幅图像上所有的解剖点,或至少是所有具有诊断意义的点及手术感兴趣的点都达到匹配，配准处理一般可以分为图像变换和图像定位两种。
 
+                </p>
+            </pre>
+            <div class="card-body">
+                <h4 class="h3 text-dark pt-3" name="titles">图像配准</h4>
+                <h4 class="h3 text-dark pt-3 pb-5">请输入两张彩色图像 如下：</h4>
+                <img src="/static/images/text3.png" style="width: 250px;">
+                <img src="/static/images/text4.png" style="width: 250px;">
+                <div class="form-group">
+                    <label for="pic3"></label>
+                    <input type="file" name="pic3" class="btn btn-block btn-lg bg-white mt-4"
+                        id="exampleFormControlFile1" onchange="post_pic3(this)" multiple/>
+                </div>
+                <div class="container">
+                    <div id="display_none6" style="left: 5%;position:absolute;"></div>
+                    <div id="display_none7" style="left: 35%;position:absolute;"></div>
+                    <div id="display_none8" style="left: 65%;position:absolute;"></div>
+                </div>
+            </div>
+            <div style="height: 250px;"></div>
+            <pre>
+                <p style="font-size: large;">
     医学图像在空间域配准之后,就可以进行图像融合,融合图像的创建又分为图像数据的融合与融合图像的显示两部分来完成。图像融合的目的是通过综合处理应用这些成像设备所得信息以获得新的有助于临床诊断的信息。利用可视化软件，对多种模态的图像进行图像融合，可以准确地确定病变体的空间位置、大小、几何形状及它与周围生物组织之间的空间关系，从而及时高效地诊断疾病，也可以用在手术计划的制定、病理变化的跟踪、治疗效果的评价等方面。
 
                 </p>
             </pre>
+            <div class="card-body">
+                <h4 class="h3 text-dark pt-3" name="titles">图像融合</h4>
+                <h4 class="h3 text-dark pt-3 pb-5">请输入两张图像 如下：</h4>
+                <img src="/static/images/text1.png" style="width: 250px;">
+                <img src="/static/images/text2.png" style="width: 250px;">
+                <div class="form-group">
+                    <label for="pic4"></label>
+                    <input type="file" name="pic4" class="btn btn-block btn-lg bg-white mt-4"
+                        id="exampleFormControlFile1" onchange="post_pic4(this)" multiple />
+                </div>
+                <div class="container">
+                    <div id="display_none9" style="left: 5%;position:absolute;"></div>
+                    <div id="display_none10" style="left: 35%;position:absolute;"></div>
+                    <div id="display_none11" style="left: 65%;position:absolute;"></div>
+                </div>
+            </div>
         </div>
         <div class="tab-pane fade" id="contact42" role="tabpanel" aria-labelledby="contact-tab">
             <pre>
