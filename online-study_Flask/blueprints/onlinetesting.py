@@ -13,7 +13,7 @@ def onlinetesting():
 @bp.route('/testing/',methods=["POST"]) 
 @captcha__is_login
 def testing():
-    id_questions=str(random.randint(1, 4))
+    id_questions=str(random.randint(1, 5))
     text=Questions.query.filter_by(id=id_questions)
     test_answer=text[0].answer
     test_user_answer=request.form.get("answers")
