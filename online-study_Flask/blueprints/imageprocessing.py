@@ -2,7 +2,6 @@
 import base64
 from io import BytesIO
 import os
-import signal
 import cv2
 from flask import Blueprint, jsonify, request
 # from skimage import io
