@@ -1,17 +1,13 @@
 {% extends 'base.html' %} {% block title %} 医影智学tool {% endblock %} {% block
 head %}
 <!-- 定义主页背景色的CSS样式 -->
-<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
-<script src="../../static/js/bootstrap.bundle.min.js"></script>
-<script src="../../static/js/tupian.js"></script>
-<script src="//unpkg.com/layui@2.9.8/dist/layui.js"></script>
-<script src="../../static/js/editormd.js"></script>
-<script src="../../static/js/layedit.js"></script>
+<script src="../../static/js/waibu/jquery.min.js"></script>
+<script src="../../static/js/bootsrap/bootstrap.bundle.min.js"></script>
+<script src="../../static/js/wangzhan/other.js"></script>
 
 <link href="//unpkg.com/layui@2.9.8/dist/css/layui.css" rel="stylesheet">
-<link rel="stylesheet" href="../../static/css/jquery-scrollbar.css" />
-<link rel="stylesheet" href="../../static/css/root.css" />
-<link rel="stylesheet" href="../../static/css/imageprocessing.css" />
+<link rel="stylesheet" href="../../static/css/waibu/jquery-scrollbar.css" />
+<link rel="stylesheet" href="../../static/css/wangzhan.css" />
 <link rel="stylesheet" href="../../static/css/bootstart/bootstrap.css" />
 <link rel="stylesheet" href="../../static/css/bootstart/bootstrap.min.css" />
 <link rel="stylesheet" href="../../static/css/bootstart/bootstrap-grid.css" />
@@ -19,7 +15,7 @@ head %}
 <link rel="stylesheet" href="../../static/css/bootstart/bootstrap-reboot.min.css" />
 <link rel="stylesheet" href="../../static/css/bootstart/bootstrap-utilities.css" />
 {% endblock %} {% block body%}
-<div style="background: url(/static/images/w6.jpg);background-attachment: fixed">
+<div style="background: url(/static/images/w6.jpg);background-attachment:fixed;">
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-dark bg-dark py-4">
         <div class="container">
             <a class="h1 navbar-brand" href="{{url_for('root')}}">欢迎来到医影智学tool!</a>
@@ -120,5 +116,6 @@ head %}
             <div style="height: 100px;"></div>
         </div>
     </div>
+    <div style="height: 100px;"></div>
 </div>
 {% endblock %}

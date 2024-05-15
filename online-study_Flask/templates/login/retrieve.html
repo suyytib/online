@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block title %} 找回密码 {% endblock %} {% block head %}
 <!-- 加载注册用的js代码 -->
-<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="../../static/js/retrieve.js"></script>
-<link rel="stylesheet" type="text/css" href="../../static/css/code.css" />
-<link rel="stylesheet" href="../../static/css/root.css" />
+<script src="../../static/js/waibu/jquery.min.js"></script>
+<script src="../../static/js/waibu/particles.min.js"></script>
+<script src="../../static/js/wangzhan/other.js"></script>
+
+<link rel="stylesheet" href="../../static/css/wangzhan.css" />
 
 <link rel="stylesheet" href="../../static/css/bootstart/bootstrap.min.css" />
 <link rel="stylesheet" href="../../static/css/bootstart/bootstrap.css" />
@@ -59,6 +59,7 @@
                                     <p>{{ email_error }}</p>
                                     {% endif %}
                                 </div>
+                                <div style="height: 100px;"></div>
                             </form>
                         </div>
                     </div>
