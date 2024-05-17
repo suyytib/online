@@ -39,7 +39,7 @@ function get_captcha() {
 
 
 //retrieve.js
-function get_captchab() {
+function get_captchb() {
   // 监听id为button函数的点击事件
   $("#button").click(function (event) {
     var $this = $(this);
