@@ -1,7 +1,7 @@
 //register.js
 function get_captcha() {
   // 监听id为button函数的点击事件
-  $("#button").click(function (event) {
+  $("#buttona").click(function (event) {
     var $this = $(this);
     // 阻止默认事件
     event.preventDefault();
